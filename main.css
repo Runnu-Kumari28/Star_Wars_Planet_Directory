@@ -1,16 +1,4 @@
-body{
-    background-image: url("./resources/bck-images-07.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: auto;
-    min-height: 100vh;
-    width: 100%;
-    z-index: 1;
-    background-position: center center;
-}
-
 .card-container{
-    max-height: 89vh;
     overflow-y: scroll;
     display: flex;
     align-items: center;
@@ -29,4 +17,12 @@ body{
     display: flex;
     flex-wrap: wrap;
     max-width: 100%;
+}
+
+.container{
+    max-height: 94vh;
+}
+
+.card-image{
+    max-height: 40vh;
 }
