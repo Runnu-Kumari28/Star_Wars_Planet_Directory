@@ -16,7 +16,7 @@ function fetchPlanetDataAndPopulate(url){
     if(url === "null" || url === "undefined"){
         return;
     }
-    console.log(`url: ${url}, type: ${typeof(url)}`);
+
     let totalData = 0;
     let next = "";
     let previous = "";
@@ -26,7 +26,6 @@ function fetchPlanetDataAndPopulate(url){
         next = data?.next;
         previous = data?.previous;
         let planetCards = "";
-        console.log(data); // TODO: Remove console;
         swPlanetData.map((planet, index) => {
             const totalResidence = planet.residents.length;
             const imageNo = Math.floor(Math.random()*15)+1;
@@ -54,6 +53,7 @@ function fetchPlanetDataAndPopulate(url){
             
         const cardElements = document.createElement("div");
         cardElements.classList.add("container");
+        cardElements.classList.add("sw-card-container");
         cardElements.innerHTML = planetCards;
         const elementCardContainer = document.getElementById("sw-card-container");
         elementCardContainer.innerHTML = "";
@@ -75,7 +75,7 @@ function createResidentDetails(residentsArr, planetNo){
                         residentsArr.forEach((resident, index) => {
                             residentList += `
                                 <li class="list-group-item p-1 m-1">
-                                    <button type="button" class="btn btn-light btn-md p-1" data-bs-toggle="modal" data-bs-target="#residence-modal" onclick="fetchResidenceDataAndUpdate('${resident}')">Resident No: ${index+1}</button>
+                                    <button type="button" class="btn  btn-outline-info btn-md p-1" data-bs-toggle="modal" data-bs-target="#residence-modal" onclick="fetchResidenceDataAndUpdate('${resident}')">Resident No: ${index+1}</button>
                                 </li>`;
                         })
                         residentList += "</ul>"
@@ -93,10 +93,8 @@ function fetchResidenceDataAndUpdate(url){
         return;
     }
 
-    console.log(`url: ${url}, type: ${typeof(url)}`);
     let modalBodyContent = "";
     fetchApiData(url).then(swResidentData => {
-        console.log(`data: ${JSON.stringify(swResidentData)}`);
         modalBodyContent += `
                 <h3 class="fs-3">Name: ${swResidentData.name}</h3>
                 <p>Height: ${swResidentData.height}</p>
