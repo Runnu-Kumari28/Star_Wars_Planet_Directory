@@ -29,29 +29,31 @@ function fetchPlanetDataAndPopulate(url){
         console.log(data); // TODO: Remove console;
         swPlanetData.map((planet, index) => {
             const totalResidence = planet.residents.length;
+            const imageNo = Math.floor(Math.random()*15)+1;
             planetCards += `
-            <div class="container">
-                <div class="card mt-3">
-                    <img src="resources/demo-image.jpg" alt="StarWarsPlanet" class="card-img-top">
-                    <div cla="card-header">
-                        <p>StarWarPlanets-Name : ${planet.name}</p>
+                    <div class="row justify-content-center p-0">
+                    <div class="card mb-2 mt-1 col-md-7 col-sm-10 col-5 align-self-center">
+                        <img src="./resources/planets/planet-${imageNo}.jpg" alt="StarWarsPlanet" class="card-image p-1">
+                        <div class="card-header">
+                            <h2>Name : ${planet.name}</h2>
+                        </div>
+                        <div class="card-body">
+                            <span>Population: ${planet.population}</span><br>
+                            <span>Climate: ${planet.climate}</span><br>
+                            <span>Terrain: ${planet.terrain}</span><br>
+                            <span>Rotation-Period: ${planet.rotation_period}</span><br>
+                            <span>Orbital-Period: ${planet.orbital_period}</span>
+                        </div>
+                        <div class="card-footer text-body-secondary">
+                            <span>No of Residents: ${totalResidence}</span>
+                            ${createResidentDetails(planet.residents, index)}
+                        </div>  
                     </div>
-                    <div class="card-body">
-                        <span>Planet-population: ${planet.population}</span><br>
-                        <span>Planet-climate: ${planet.climate}</span><br>
-                        <span>Planet-terrain: ${planet.terrain}</span><br>
-                        <span>Planet-rotation-period: ${planet.rotation_period}</span><br>
-                        <span>Planet-orbital-period: ${planet.orbital_period}</span>
-                    </div>
-                    <div class="card-footer text-body-secondary">
-                        <span>No of Residents: ${totalResidence}<span>
-                        ${createResidentDetails(planet.residents, index)}
-                    </div>
-                </div>   
-            </div>;`
-        });
+                </div>`
+            });
             
         const cardElements = document.createElement("div");
+        cardElements.classList.add("container");
         cardElements.innerHTML = planetCards;
         const elementCardContainer = document.getElementById("sw-card-container");
         elementCardContainer.innerHTML = "";
