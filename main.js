@@ -32,7 +32,7 @@ function fetchPlanetDataAndPopulate(url){
             const imageNo = Math.floor(Math.random()*15)+1;
             planetCards += `
                     <div class="row justify-content-center p-0">
-                    <div class="card mb-2 mt-1 col-md-7 col-sm-10 col-5 align-self-center">
+                    <div class="card mb-2 mt-1 col-md-7 col-sm-10 col-10 align-self-center">
                         <img src="./resources/planets/planet-${imageNo}.jpg" alt="StarWarsPlanet" class="card-image p-1">
                         <div class="card-header">
                             <h2>Name : ${planet.name}</h2>
